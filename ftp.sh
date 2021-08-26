@@ -12,13 +12,13 @@ sudo ufw allow 21/tcp
 sudo ufw allow 990/tcp
 sudo ufw allow 40000:50000/tcp
 
-declare -a StringArray=("nodeflux" "donkey" "gandalf")
-for val in ${StringArray[@]}; do
-   sudo adduser $val
-   sudo mkdir /home/$val/ftp
-   sudo chown nobody:nogroup /home/$val/ftp
-   sudo chmod a-w /home/$val/ftp
-done
+sudo groupadd -r full
+sudo groupadd -r semi
+sudo groupadd -r rest 
+
+useradd -G full -m nodeflux
+useradd -G semi -m donkey
+useradd -G rest -m gandalf
 
 sudo sed -i 's|#write_enable=YES|write_enable=YES|' /etc/vsftpd.conf
 sudo sed -i 's|#chroot_local_user=YES|chroot_local_user=YES|' /etc/vsftpd.conf
