@@ -16,9 +16,9 @@ sudo groupadd -r full
 sudo groupadd -r semi
 sudo groupadd -r rest 
 
-useradd -G full -m nodeflux
-useradd -G semi -m donkey
-useradd -G rest -m gandalf
+sudo useradd -G full -m nodeflux
+sudo useradd -G semi -m donkey
+sudo useradd -G rest -m gandalf
 
 sudo sed -i 's|#write_enable=YES|write_enable=YES|' /etc/vsftpd.conf
 sudo sed -i 's|#chroot_local_user=YES|chroot_local_user=YES|' /etc/vsftpd.conf
